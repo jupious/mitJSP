@@ -18,8 +18,8 @@
 	<form action ="" method = "post">
 		<fieldset id = "fs">
 			<legend>로그인하기</legend>
-			I D : <input type = "text" name = "id" autofocus/><br/>
-			PW : <input type = "password" name = "pw" /><br/><br/>
+			I D : <input type = "text" name = "id" autofocus required/><br/>
+			PW : <input type = "password" name = "pw" required="required"/><br/><br/>
 			<input type = "submit" value = "로그인" /> <a href="SignUp.jsp"><input type = "button" value = "회원가입" /></a>
 		</fieldset>	
 	</form>
@@ -28,9 +28,10 @@
 	String pw = request.getParameter("pw");
 	
 	db = new BoardDBM();
-	
+	//쿠키쓰면 로그인유지가능할듯
 	if(db.loginCheck(id, pw)){
 		System.out.println("로그인 성공"+id+pw);
+		response.sendRedirect("BoardMain.jsp");
 	}else{
 		System.out.println("로그인 실패.."+id+pw);
 	}
