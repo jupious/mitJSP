@@ -51,6 +51,7 @@
 </script>
 <script>
 	$(function() {
+		//$(document).on("click",".cButton",function() {}) 이렇게도 사용가능(매개변수를 동적으로 이용하고 싶을때)
 		$("#closeBtn1").click(function() {
 			$("#popup1").hide();
 	
@@ -97,7 +98,7 @@
         <div align="right" class = "pop">
 	        <form name="popFrm">
 	            <input type="checkbox" class ="inactiveToday" value="1" id = "p1" />
-	            <label for = "p1">하루 동안 열지 마라1</label>
+	            <label for = "p1">하루 동안 열지 마라</label>
 	            <input type="button" value="닫기" id="closeBtn1" class = "cButton" />
 	        </form>
         </div>
@@ -115,7 +116,7 @@
         <div align="right" class = "pop">
 	        <form name="popFrm">
 	            <input type="checkbox" class ="inactiveToday" value="2" id = "p2" />
-	            <label for = "p2">하루 동안 열지 마라2</label>
+	            <label for = "p2">하루 동안 열지 마라</label>
 	            <input type="button" value="닫기" id="closeBtn2" class = "cButton" />
 	        </form>
         </div>
@@ -133,7 +134,7 @@
         <div align="right" class = "pop">
 	        <form name="popFrm">
 	            <input type="checkbox" class="inactiveToday" value="3" id = "p3" />
-	            <label for = "p3">하루 동안 열지 마라3</label>
+	            <label for = "p3">하루 동안 열지 마라</label>
 	            
 	            <input type="button" value="닫기" id="closeBtn3" class = "cButton" />
 	        </form>
