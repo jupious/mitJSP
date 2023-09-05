@@ -2,17 +2,15 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
   <servlet>
     <description></description>
-    <display-name>testControler</display-name>
-    <servlet-name>testControler</servlet-name>
-    <servlet-class>controler.testControler</servlet-class>
+    <display-name>ChatControler</display-name>
+    <servlet-name>ChatControler</servlet-name>
+    <servlet-class>controler.ChatControler</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>testControler</servlet-name>
-    <url-pattern>/testControler</url-pattern>
-    <url-pattern>/test</url-pattern>
-    <url-pattern>/list</url-pattern>
+    <servlet-name>ChatControler</servlet-name>
+    <url-pattern>*.chat</url-pattern>
   </servlet-mapping>
-  <display-name>Model2Quiz5</display-name>
+  <display-name>MyChat</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
