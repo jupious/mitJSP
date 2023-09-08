@@ -74,5 +74,18 @@ step의 기본값 = 1<br/>
 </c:forEach>
 </table>
 <hr/>
+
+<c:forTokens items="010-1234-5678" delims="-" var = "num">
+	${num} <br/>
+</c:forTokens>
+c:forTokens 문자열을 구분자로 구분해서 반복함<br/>
+<hr/>
+
+<c:url value = "test" var = "url">
+</c:url>
+<a href = "${url}" >c:url</a><br/>
+<c:out value = "<h1>여기를 출력함</h1>" ></c:out><br/>
+<h1>여기를 출력함</h1>
+c:out으로 value값을 출력하면 특수문자를 문자열로 변환해서 처리한다(태그 동작x)
 </body>
 </html>

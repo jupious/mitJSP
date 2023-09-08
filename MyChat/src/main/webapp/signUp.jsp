@@ -11,7 +11,7 @@
 </head>
 <body>
 <form action = "signuptry.chat" method = "post">
-	<fieldset>
+	<fieldset id = "fs">
 		<legend>회원가입</legend>
 		이 름 : <input type = "text" name = "name" autofocus required />
 		P W : <input type = "password" name = "pw" required />

@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+/*큰버튼*/
+.buttons{
+    font-size: 20px;
+    width: 150px;
+    height: 60px;
+    background-color: rgb(240, 239, 201);
+    border-style: outset;
+    border-color: rgb(240, 239, 201);
+    border-width: 2pt;         
+    
+}
+/*작은버튼*/
+.buttonss{
+    font-size: 16px;
+    width: 80px;
+    height: 40px;
+    background-color: rgb(240, 239, 201);
+    margin-bottom: 20px;
+    border-style: outset;
+    border-color: rgb(240, 239, 201);
+    border-width: 2pt;
+}
+/*필드셋 테두리*/
+fieldset{ 
+    width: 620px; 
+    border-color: gray;
+    border-width: 1pt;
+    border-style: solid;
+}
+/*작은버튼 여백조정*/
+#needed{
+    margin-top: 20px;
+    margin-left: 30px;
+}
