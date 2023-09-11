@@ -6,10 +6,13 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.ChatDAO;
+import model.ChatVO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 
 public class ChatControler extends HttpServlet {
@@ -20,12 +23,33 @@ public class ChatControler extends HttpServlet {
 		String command = request.getServletPath();
 		
 		if(command.equals("/login.chat")) {
-			request.getRequestDispatcher("loginChat.jsp").forward(request, response);
-		}else if(command.equals("/chatmain.chat")) {
+			HttpSession session =  request.getSession();
+			if( session.getAttribute("chatUser") == null || ((String)session.getAttribute("chatUser")).equals("")) {
+				request.getRequestDispatcher("loginChat.jsp").forward(request, response);
+			}else {
+				response.sendRedirect("chatmain.chat");
+			}
 			
-			request.getRequestDispatcher("chatmain.jsp").forward(request, response);
+		}else if(command.equals("/chatmain.chat")) {
+			HttpSession session =  request.getSession();
+			ChatDAO dao = new ChatDAO();
+			List<ChatVO> list = dao.list();
+			if( session.getAttribute("chatUser") == null || ((String)session.getAttribute("chatUser")).equals("")) {
+				request.setAttribute("msg", "wrongAccess");
+				request.getRequestDispatcher("alert.jsp").forward(request, response);
+			}else {
+				if(list.size() != 0) {
+					request.setAttribute("chatlog", list);
+				}
+				request.getRequestDispatcher("chatmain.jsp").forward(request, response);
+			}
+			
 		}else if(command.equals("/signup.chat")) {
 			request.getRequestDispatcher("signUp.jsp").forward(request, response);
+		}else if(command.equals("/logout.chat")) {
+			System.out.println("로그아웃 요청됨");
+			request.getSession().setAttribute("chatUser", "");
+			response.sendRedirect("login.chat");
 		}
 		
 	}
@@ -59,17 +83,6 @@ public class ChatControler extends HttpServlet {
 				request.setAttribute("msg", "signupfail");
 				request.getRequestDispatcher("alert.jsp").forward(request, response);
 			}
-		}else if(command.equals("/sendchat.chat")) {
-			System.out.println("여기는왔냐");
-
-			String text = request.getParameter("text");
-
-			System.out.println(text);
-
-			request.setAttribute("text", text);
-			request.getRequestDispatcher("chatmain.jsp").forward(request, response);
-		}else if(command.equals("/chatmain.chat")) {
-			System.out.println("설마 여기로옴???");
 		}
 	}
 

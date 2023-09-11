@@ -6,12 +6,12 @@ public class ChatVO {
 	private String name;
 	private String pw;
 	private String text;
-	private Date chattime;
+	private String chattime;
 	private Integer chatcount;
 	
 	public ChatVO() {}
 	
-	public ChatVO(String name, String pw, String text, Date chattime) {
+	public ChatVO(String name, String pw, String text, String chattime) {
 		this.name = name;
 		this.pw = pw;
 		this.text = text;
@@ -42,11 +42,11 @@ public class ChatVO {
 		this.text = text;
 	}
 	
-	public Date getChattime() {
+	public String getChattime() {
 		return chattime;
 	}
 	
-	public void setChattime(Date chattime) {
+	public void setChattime(String chattime) {
 		this.chattime = chattime;
 	}
 

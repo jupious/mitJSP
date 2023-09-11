@@ -26,6 +26,12 @@
 	location.href= "signup.chat";
 </script>
 </c:if>
+<c:if test="${msg == 'wrongAccess' }">
+<script>
+	alert('잘못된 접근입니다!'); 
+	location.href= "login.chat";
+</script>
+</c:if>
 
 </head>
 <body>

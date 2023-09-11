@@ -1,6 +1,9 @@
 package model;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChatDAO extends ChatConnecter{
 	
@@ -77,7 +80,7 @@ public class ChatDAO extends ChatConnecter{
 			}else {
 				dbConn();
 				try {
-					pstmt = conn.prepareStatement("insert into chatlog values (?, ?)");
+					pstmt = conn.prepareStatement("insert into chatlog (name, text) values (?, ?)");
 					pstmt.setString(1, name);
 					pstmt.setString(2, vo.getText());
 					check = pstmt.executeUpdate();
@@ -128,5 +131,33 @@ public class ChatDAO extends ChatConnecter{
 			return count;
 		}
 		
-		
+		//채팅기록 반환
+		public List<ChatVO> list(){
+			List<ChatVO> list = new ArrayList<>();
+			SimpleDateFormat df = new SimpleDateFormat("aa hh:mm:ss");
+			dbConn();
+			try {
+				pstmt = conn.prepareStatement("select * from chatlog order by chattime");
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					ChatVO vo = new ChatVO();
+					vo.setName(rs.getString("name"));
+					vo.setText(rs.getString("text"));
+					vo.setChattime(df.format(rs.getTimestamp("chattime")));
+					System.out.println(df.format(rs.getTimestamp("chattime")));
+					java.util.Date aa= new java.util.Date();
+					System.out.println("aa"+aa);
+					
+					System.out.println(df.format(aa));
+					aa = rs.getDate("chattime");
+					System.out.println("get aa"+ df.format(aa));
+					list.add(vo);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dbClose();
+			return list;
+		}
 }
